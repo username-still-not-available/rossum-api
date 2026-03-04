@@ -1,6 +1,31 @@
 # CHANGELOG
 
 
+## v3.11.0 (2026-03-04)
+
+### Chores
+
+- Add CLAUDE.md symlink to make claude power-user
+  ([`65e830f`](https://github.com/rossumai/rossum-api/commit/65e830f9ea336e90c9ef127709307ee2d4600c04))
+
+- Add OpenApi spec reference to AGENTS.md
+  ([`91d7d9e`](https://github.com/rossumai/rossum-api/commit/91d7d9e83f87cf084c801de7e572fcd6465ca39f))
+
+- Fix hyperlinks after Elis API doc template change
+  ([`f33e8bd`](https://github.com/rossumai/rossum-api/commit/f33e8bde49afa68714e8ef08e792ce519b499f0a))
+
+- Migrate from mypy to ty
+  ([`a8db181`](https://github.com/rossumai/rossum-api/commit/a8db181154e81cf6018786ac5f86806ce31f40f2))
+
+- Run pre-commit as a single separte CI job
+  ([`7d9ad59`](https://github.com/rossumai/rossum-api/commit/7d9ad594ff33ff610bd7536885bf33aa4289333f))
+
+### Features
+
+- Add annotation processing duration endpoint
+  ([`9dda9fb`](https://github.com/rossumai/rossum-api/commit/9dda9fbee75cc418d392cd1f7b20beb58acd709a))
+
+
 ## v3.10.0 (2026-02-12)
 
 ### Features
