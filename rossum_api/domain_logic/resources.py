@@ -10,6 +10,7 @@ class Resource(Enum):
     """
 
     Annotation = "annotations"
+    AnnotationProcessingDuration = "annotations/processing_duration"
     Auth = "auth"
     Connector = "connectors"
     Document = "documents"

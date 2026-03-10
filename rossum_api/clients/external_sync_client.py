@@ -1165,7 +1165,7 @@ class SyncRossumAPIClient(
             "GET",
             build_resource_processing_duration_url(Resource.Annotation, annotation_id),
         )
-        return AnnotationProcessingDuration(**data)
+        return self._deserializer(Resource.AnnotationProcessingDuration, data)
 
     # ##### DOCUMENTS #####
 

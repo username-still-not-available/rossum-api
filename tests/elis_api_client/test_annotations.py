@@ -154,6 +154,8 @@ def dummy_annotation_processing_duration():
         "time_spent_blockers": 2.34,
         "time_spent_emails": 3.45,
         "time_spent_opening": 4.56,
+        "duration_latest_validate_started": 5.67,
+        "duration_latest_validate_updated_before_confirm": 6.78,
     }
 
 
@@ -471,6 +473,20 @@ class TestAnnotations:
 
         http_client.request_json.assert_called_with(
             "GET", f"{Resource.Annotation.value}/{aid}/processing_duration"
+        )
+
+    async def test_retrieve_annotation_processing_duration_ignores_unknown_fields(
+        self, elis_client, dummy_annotation, dummy_annotation_processing_duration
+    ):
+        client, http_client = elis_client
+        data_with_extra = {**dummy_annotation_processing_duration, "unexpected_field": 99.9}
+        http_client.request_json.return_value = data_with_extra
+
+        aid = dummy_annotation["id"]
+        processing_duration = await client.retrieve_annotation_processing_duration(aid)
+
+        assert processing_duration == AnnotationProcessingDuration(
+            **dummy_annotation_processing_duration
         )
 
 
@@ -791,4 +807,18 @@ class TestAnnotationsSync:
 
         http_client.request_json.assert_called_with(
             "GET", f"{Resource.Annotation.value}/{aid}/processing_duration"
+        )
+
+    def test_retrieve_annotation_processing_duration_ignores_unknown_fields(
+        self, elis_client_sync, dummy_annotation, dummy_annotation_processing_duration
+    ):
+        client, http_client = elis_client_sync
+        data_with_extra = {**dummy_annotation_processing_duration, "unexpected_field": 99.9}
+        http_client.request_json.return_value = data_with_extra
+
+        aid = dummy_annotation["id"]
+        processing_duration = client.retrieve_annotation_processing_duration(aid)
+
+        assert processing_duration == AnnotationProcessingDuration(
+            **dummy_annotation_processing_duration
         )

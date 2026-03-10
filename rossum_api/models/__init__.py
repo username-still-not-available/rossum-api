@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 import dacite
 
 from rossum_api.domain_logic.resources import Resource
-from rossum_api.models.annotation import Annotation
+from rossum_api.models.annotation import Annotation, AnnotationProcessingDuration
 from rossum_api.models.connector import Connector
 from rossum_api.models.document import Document
 from rossum_api.models.document_relation import DocumentRelation
@@ -42,6 +42,7 @@ if TYPE_CHECKING:
 
 RESOURCE_TO_MODEL = {
     Resource.Annotation: Annotation,
+    Resource.AnnotationProcessingDuration: AnnotationProcessingDuration,
     Resource.Connector: Connector,
     Resource.Document: Document,
     Resource.DocumentRelation: DocumentRelation,
