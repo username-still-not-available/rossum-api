@@ -154,6 +154,8 @@ def dummy_annotation_processing_duration():
         "time_spent_blockers": 2.34,
         "time_spent_emails": 3.45,
         "time_spent_opening": 4.56,
+        "duration_latest_validate_started": 5.67,
+        "duration_latest_validate_updated_before_confirm": 6.78,
     }
 
 

@@ -28,6 +28,12 @@ class AnnotationProcessingDuration:
         Time spent on emails in seconds.
     time_spent_opening
         Time spent opening the annotation in seconds.
+    duration_latest_validate_started
+        Duration of the latest validate call with ``started`` action after opening
+        the annotation, in seconds. Can be None.
+    duration_latest_validate_updated_before_confirm
+        Duration of the latest validate call with ``updated`` action before
+        confirmation of the annotation, in seconds. Can be None.
 
     References
     ----------
@@ -43,6 +49,8 @@ class AnnotationProcessingDuration:
     time_spent_blockers: float
     time_spent_emails: float
     time_spent_opening: float
+    duration_latest_validate_started: float | None
+    duration_latest_validate_updated_before_confirm: float | None
 
 
 @dataclass
