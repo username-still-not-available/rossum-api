@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v3.11.1 (2026-03-10)
+
+### Bug Fixes
+
+- Use deserializer for AnnotationProcessingDuration
+  ([`6c612b4`](https://github.com/rossumai/rossum-api/commit/6c612b42ff40ee3bbb396a85a9fc9f1d41be02e5))
+
+### Chores
+
+- Add missing AnnotationProcessingDuration fields
+  ([`e981c15`](https://github.com/rossumai/rossum-api/commit/e981c15ffd9b0097c55d7de6243b44050e20fb24))
+
+
 ## v3.11.0 (2026-03-04)
 
 ### Chores
