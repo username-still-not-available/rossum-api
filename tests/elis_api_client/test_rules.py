@@ -327,10 +327,12 @@ class TestRuleActionDeserialization:
         rule = Rule.from_dict(data)
         assert isinstance(rule.actions[0].payload, expected_cls)
 
-    def test_unknown_action_type_raises(self):
+    def test_unknown_action_type_stays_as_dict(self):
         data = self._make_rule_dict("some_future_type", {"key": "val"})
-        with pytest.raises(KeyError):
-            Rule.from_dict(data)
+        rule = Rule.from_dict(data)
+        payload = rule.actions[0].payload
+        assert isinstance(payload, dict)
+        assert payload == {"key": "val"}
 
     def test_payload_with_missing_required_field_raises(self):
         data = self._make_rule_dict("custom", {"payload": {}})

@@ -369,7 +369,7 @@ class RuleAction:
         action_type: RuleActionType = data["type"]
         payload_data = data.get("payload", {})
 
-        payload_cls = _ACTION_TYPE_TO_PAYLOAD[action_type]
+        payload_cls = _ACTION_TYPE_TO_PAYLOAD.get(action_type)
         payload: RuleActionPayload
         if payload_cls is not None:
             payload = cast("RuleActionPayload", dacite.from_dict(payload_cls, payload_data))
