@@ -6,6 +6,7 @@ import pytest
 from rossum_api.domain_logic.resources import Resource
 from rossum_api.models.rule import (
     AddAutomationBlockerPayload,
+    AddRemoveLabelPayload,
     AddValidationSourcePayload,
     ChangeQueuePayload,
     ChangeStatusPayload,
@@ -298,7 +299,7 @@ class TestRuleActionDeserialization:
             ),
             ("add_label", {"labels": ["lbl1"]}, LabelsPayload),
             ("remove_label", {"labels": ["lbl1"]}, LabelsPayload),
-            ("add_remove_label", {"labels": ["lbl1"]}, LabelsPayload),
+            ("add_remove_label", {"labels": ["lbl1"]}, AddRemoveLabelPayload),
             ("show_field", {"schema_ids": ["s1"]}, SchemaIdsPayload),
             ("hide_field", {"schema_ids": ["s1"]}, SchemaIdsPayload),
             ("show_hide_field", {"schema_ids": ["s1"]}, SchemaIdsPayload),

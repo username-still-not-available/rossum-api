@@ -132,7 +132,28 @@ class LabelsPayload:
 
 AddLabelPayload = LabelsPayload
 RemoveLabelPayload = LabelsPayload
-AddRemoveLabelPayload = LabelsPayload
+
+
+@dataclass
+class AddRemoveLabelPayload:
+    """Payload for ``add_remove_label`` rule action.
+
+    When ``condition`` evaluates to True labels are added; when False they are removed.
+
+    Attributes
+    ----------
+    labels
+        URLs of label objects to be linked/unlinked from the processed annotation.
+    condition
+        When True, adds labels; when False, removes them.
+
+    References
+    ----------
+    https://rossum.app/api/docs/openapi/api/rule/
+    """
+
+    labels: list[str] = field(default_factory=list)
+    condition: bool = True
 
 
 @dataclass
@@ -227,6 +248,7 @@ RuleActionPayload = (
     | ChangeStatusPayload
     | ChangeQueuePayload
     | LabelsPayload
+    | AddRemoveLabelPayload
     | SchemaIdsPayload
     | AddValidationSourcePayload
     | SendEmailPayload
@@ -239,6 +261,7 @@ _PayloadClass = (
     | type[ChangeStatusPayload]
     | type[ChangeQueuePayload]
     | type[LabelsPayload]
+    | type[AddRemoveLabelPayload]
     | type[SchemaIdsPayload]
     | type[AddValidationSourcePayload]
     | type[SendEmailPayload]
@@ -251,7 +274,7 @@ _ACTION_TYPE_TO_PAYLOAD: dict[str, _PayloadClass | None] = {
     "change_queue": ChangeQueuePayload,
     "add_label": LabelsPayload,
     "remove_label": LabelsPayload,
-    "add_remove_label": LabelsPayload,
+    "add_remove_label": AddRemoveLabelPayload,
     "show_field": SchemaIdsPayload,
     "hide_field": SchemaIdsPayload,
     "show_hide_field": SchemaIdsPayload,
