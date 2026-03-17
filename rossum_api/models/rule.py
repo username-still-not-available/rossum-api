@@ -137,10 +137,12 @@ AddRemoveLabelPayload = LabelsPayload
 
 @dataclass
 class SchemaIdsPayload:
-    """Payload for ``show_field``, ``hide_field``, and ``show_hide_field`` rule actions.
+    """Payload for ``show_field`` and ``hide_field`` rule actions.
 
     Attributes
     ----------
+    schema_id
+        Single schema field ID whose ``hidden`` attribute will be set accordingly.
     schema_ids
         Schema field IDs whose ``hidden`` attribute will be set accordingly.
 
@@ -149,6 +151,7 @@ class SchemaIdsPayload:
     https://rossum.app/api/docs/openapi/api/rule/
     """
 
+    schema_id: str | None = None
     schema_ids: list[str] = field(default_factory=list)
 
 
