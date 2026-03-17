@@ -14,6 +14,7 @@ from rossum_api.models.rule import (
     Rule,
     SchemaIdsPayload,
     SendEmailPayload,
+    ShowHideFieldPayload,
     ShowMessagePayload,
 )
 
@@ -302,7 +303,7 @@ class TestRuleActionDeserialization:
             ("add_remove_label", {"labels": ["lbl1"]}, AddRemoveLabelPayload),
             ("show_field", {"schema_ids": ["s1"]}, SchemaIdsPayload),
             ("hide_field", {"schema_ids": ["s1"]}, SchemaIdsPayload),
-            ("show_hide_field", {"schema_ids": ["s1"]}, SchemaIdsPayload),
+            ("show_hide_field", {"schema_ids": ["s1"]}, ShowHideFieldPayload),
             ("add_validation_source", {"schema_id": "field_1"}, AddValidationSourcePayload),
             (
                 "send_email",

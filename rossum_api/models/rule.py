@@ -178,7 +178,31 @@ class SchemaIdsPayload:
 
 ShowFieldPayload = SchemaIdsPayload
 HideFieldPayload = SchemaIdsPayload
-ShowHideFieldPayload = SchemaIdsPayload
+
+
+@dataclass
+class ShowHideFieldPayload:
+    """Payload for ``show_hide_field`` rule action.
+
+    When ``condition`` evaluates to True fields are shown; when False they are hidden.
+
+    Attributes
+    ----------
+    schema_id
+        Single schema field ID.
+    schema_ids
+        Schema field IDs whose ``hidden`` attribute will be set accordingly.
+    condition
+        When True, shows fields; when False, hides them.
+
+    References
+    ----------
+    https://rossum.app/api/docs/openapi/api/rule/
+    """
+
+    schema_id: str | None = None
+    schema_ids: list[str] = field(default_factory=list)
+    condition: bool = True
 
 
 @dataclass
@@ -250,6 +274,7 @@ RuleActionPayload = (
     | LabelsPayload
     | AddRemoveLabelPayload
     | SchemaIdsPayload
+    | ShowHideFieldPayload
     | AddValidationSourcePayload
     | SendEmailPayload
     | dict[str, Any]
@@ -263,6 +288,7 @@ _PayloadClass = (
     | type[LabelsPayload]
     | type[AddRemoveLabelPayload]
     | type[SchemaIdsPayload]
+    | type[ShowHideFieldPayload]
     | type[AddValidationSourcePayload]
     | type[SendEmailPayload]
 )
@@ -277,7 +303,7 @@ _ACTION_TYPE_TO_PAYLOAD: dict[str, _PayloadClass | None] = {
     "add_remove_label": AddRemoveLabelPayload,
     "show_field": SchemaIdsPayload,
     "hide_field": SchemaIdsPayload,
-    "show_hide_field": SchemaIdsPayload,
+    "show_hide_field": ShowHideFieldPayload,
     "add_validation_source": AddValidationSourcePayload,
     "send_email": SendEmailPayload,
     "custom": None,
