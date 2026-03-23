@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v3.12.1 (2026-03-23)
+
+### Bug Fixes
+
+- Add missing format field for Datapoint
+  ([`ff6e21d`](https://github.com/rossumai/rossum-api/commit/ff6e21d3e636f7fab8931f6c93eaf8165b83db2e))
+
+
 ## v3.12.0 (2026-03-17)
 
 ### Bug Fixes
